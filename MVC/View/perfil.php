@@ -22,3 +22,8 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
     <input type="file" name="foto" required>
     <button type="submit">Atualizar Foto</button>
 </form>
+
+<form action="logout.php" method="POST">
+    <button type="submit">Logout</button>
+</form>
+
