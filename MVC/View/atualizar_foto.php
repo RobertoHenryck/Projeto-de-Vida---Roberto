@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['foto'])) {
     $usuario_id = $_SESSION['usuario_id']; // ID do usuário logado

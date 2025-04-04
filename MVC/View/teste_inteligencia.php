@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
@@ -10,25 +10,58 @@ if (!isset($_SESSION['usuario_id'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $_SESSION['usuario_id'];
 
-    // Captura as respostas do formulário
     $respostas = [];
     for ($i = 1; $i <= 16; $i++) {
         $respostas[$i] = isset($_POST["q$i"]) ? $_POST["q$i"] : "N";
     }
 
-    // Insere as respostas no banco de dados
-    $sql = "INSERT INTO teste_inteligencia (user_id, " . implode(",", array_map(fn($i) => "q$i", range(1, 16))) . ")
-            VALUES (:user_id, " . implode(",", array_map(fn($i) => ":q$i", range(1, 16))) . ")";
+    // Mapeia cada pergunta a um tipo de inteligência
+    $mapa_inteligencias = [
+        1 => "musical",
+        2 => "logico",
+        3 => "corporal",
+        4 => "linguistica",
+        5 => "interpessoal",
+        6 => "intrapessoal",
+        7 => "naturalista",
+        8 => "emocional",
+        9 => "musical",
+        10 => "logico",
+        11 => "corporal",
+        12 => "linguistica",
+        13 => "interpessoal",
+        14 => "intrapessoal",
+        15 => "naturalista",
+        16 => "emocional"
+    ];
+
+    // Inicializa a contagem de pontuações
+    $pontuacoes = array_fill_keys(array_values($mapa_inteligencias), 0);
+
+    // Atribui 1 ponto para cada resposta "A"
+    foreach ($respostas as $num => $resposta) {
+        if ($resposta == 'A') {
+            $tipo = $mapa_inteligencias[$num];
+            $pontuacoes[$tipo]++;
+        }
+    }
+
+    $resultado_json = json_encode($pontuacoes);
+
+    // Insere no banco de dados
+    $sql = "INSERT INTO teste_inteligencia (user_id, " . implode(",", array_map(fn($i) => "q$i", range(1, 16))) . ", resultado)
+            VALUES (:user_id, " . implode(",", array_map(fn($i) => ":q$i", range(1, 16))) . ", :resultado)";
     
     $stmt = $pdo->prepare($sql);
-    $params = [':user_id' => $user_id];
+    $params = [':user_id' => $user_id, ':resultado' => $resultado_json];
     for ($i = 1; $i <= 16; $i++) {
         $params[":q$i"] = $respostas[$i];
     }
     $stmt->execute($params);
 
-    // Redireciona para a página de resultado
-    header("Location: resultado_inteligencias.php");
+    // Redireciona para página de resultado
+    $last_id = $pdo->lastInsertId();
+    header("Location: resultado_inteligencias.php?id=$last_id");
     exit();
 }
 ?>
@@ -68,11 +101,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $opcoes = ["A" => "Sim", "B" => "Não"];
 
         foreach ($perguntas as $index => $pergunta) {
-            echo "<p>$pergunta</p>";
+            echo "<p>" . ($index + 10) . ". $pergunta</p>";
             foreach ($opcoes as $key => $value) {
                 echo "<input type='radio' name='q" . ($index + 1) . "' value='$key' required> $value ";
             }
-            echo "<br>";
+            echo "<br><br>";
         }
         ?>
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ]);
 
     // Redireciona para a página de resultado
-    header("Location: resultado.php?tipo=" . urlencode($resultado));
+    header("Location: resultado_personalidade.php?tipo=" . urlencode($resultado));
     exit;
 }
 

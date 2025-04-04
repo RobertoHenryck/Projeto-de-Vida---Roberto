@@ -8,22 +8,16 @@ class Model
         $this->pdo = $pdo;
     }
 
-    public function sobremim($consumo_de_estacao, $consumo_do_servidor, $consumo_de_iluminacao, $consumo_de_climatizacao, $consumo_de_equipamentos, $id_usuario)
+    // Atualiza ou insere o texto "sobre mim" do usuário
+    public function sobremim($user_id, $sobre_mim)
     {
-        $sql = "INSERT INTO cadastro_consumo (consumo_de_estacao, consumo_do_servidor, consumo_de_iluminacao, consumo_de_climatizacao, consumo_de_equipamentos, id_usuario) 
-                VALUES (:consumo_de_estacao, :consumo_do_servidor, :consumo_de_iluminacao, :consumo_de_climatizacao, :consumo_de_equipamentos, :id_usuario)";
-
+        $sql = "UPDATE users SET sobre_mim = :sobre_mim WHERE id = :user_id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(":consumo_de_estacao", $consumo_de_estacao);
-        $stmt->bindParam(":consumo_do_servidor", $consumo_do_servidor);
-        $stmt->bindParam(":consumo_de_iluminacao", $consumo_de_iluminacao);
-        $stmt->bindParam(":consumo_de_climatizacao", $consumo_de_climatizacao);
-        $stmt->bindParam(":consumo_de_equipamentos", $consumo_de_equipamentos);
-        $stmt->bindParam(":id_usuario", $id_usuario);
-
-        return $stmt->execute();
+        return $stmt->execute([
+            ':sobre_mim' => $sobre_mim,
+            ':user_id' => $user_id
+        ]);
     }
 
    
-        
 }

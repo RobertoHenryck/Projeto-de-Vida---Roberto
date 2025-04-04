@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 // Buscar os dados do usuário logado
 $usuario_id = $_SESSION['usuario_id'];
@@ -26,4 +26,8 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
 <form action="logout.php" method="POST">
     <button type="submit">Logout</button>
 </form>
+
+<a href="teste_personalidade.php">Teste de Personalidade</a>
+<a href="teste_inteligencia.php">Teste de Inteligênca</a>
+<a href="sobre_mim.php">Sobre Mim</a>
 

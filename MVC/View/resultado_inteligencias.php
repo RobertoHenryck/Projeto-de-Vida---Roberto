@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
@@ -42,7 +42,7 @@ if (!$testes) {
     <h2>Selecione um teste anterior:</h2>
     <select id="selecionar_teste">
         <option value="">Escolha um teste</option>
-        <?php foreach ($testes as $teste): ?>
+        <?php foreach ($testes as $teste):?>
             <option value="<?= $teste['id'] ?>">Teste de <?= date("d/m/Y H:i", strtotime($teste['data'])) ?></option>
         <?php endforeach; ?>
     </select>
@@ -53,7 +53,7 @@ if (!$testes) {
     <script>
         document.getElementById('selecionar_teste').addEventListener('change', function() {
             let testeId = this.value;
-
+console.log(testeId);
             if (testeId) {
                 fetch('buscar_resultado.php?id=' + testeId)
                     .then(response => response.json())
