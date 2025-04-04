@@ -30,4 +30,5 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
 <a href="teste_personalidade.php">Teste de Personalidade</a>
 <a href="teste_inteligencia.php">Teste de Inteligênca</a>
 <a href="sobre_mim.php">Sobre Mim</a>
+<a href="quem_sou.php">Quem sou?</a>
 
