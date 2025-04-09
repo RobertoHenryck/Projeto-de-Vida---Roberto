@@ -100,8 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $opcoes = ["A" => "Sim", "B" => "Não"];
 
+        // Exibindo as perguntas com numeração correta
         foreach ($perguntas as $index => $pergunta) {
-            echo "<p>" . ($index + 10) . ". $pergunta</p>";
+            // A numeração começa de 1 e incrementa
+            echo "<p>" . ($index + 1) . ". " . $pergunta . "</p>";  
+            // Exibindo as opções de resposta
             foreach ($opcoes as $key => $value) {
                 echo "<input type='radio' name='q" . ($index + 1) . "' value='$key' required> $value ";
             }

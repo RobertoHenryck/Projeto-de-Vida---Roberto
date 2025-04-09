@@ -38,10 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="MVC/View/index.php">
     <title>Login</title>
+  
 </head>
 <body>
-
 
 <form method="POST">
     <h1>LOGIN</h1>
@@ -50,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p>Senha</p>
     <input type="password" name="senha" placeholder="Senha" required>
     <button type="submit">Entrar</button>
-</form>
+
 
 <p><a href="CadastrarUsuario.php">Não tem uma conta? Cadastre-se aqui</a></p>
-
-<?php if (isset($erro)) echo "<p style='color: red;'>$erro</p>"; ?>
+</form>
+<?php if (isset($erro)) echo "<p>$erro</p>"; ?>
 
 </body>
 </html>
