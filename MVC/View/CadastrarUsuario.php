@@ -56,9 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../View/css/cadastrar_usuario.css">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="path_to_your_css_file.css"> <!-- Referência ao arquivo CSS -->
 </head>
 <body>
+
+<!-- Título da Página -->
+<h2>Crie sua conta</h2>
 
 <form method="POST">
     <input type="text" name="nome" placeholder="Nome" required><br>
@@ -67,6 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="password" name="senha" placeholder="Senha" required><br>
     <input type="submit" value="Cadastrar"><br>
 </form>
+
+<!-- Exibindo mensagem de erro -->
+<?php if (isset($erro)): ?>
+    <p class="error"><?php echo $erro; ?></p>
+<?php endif; ?>
+
+<!-- Botão para voltar ao login -->
+<button class="voltar" onclick="window.location.href='index.php'">Voltar para o Login</button>
 
 </body>
 </html>

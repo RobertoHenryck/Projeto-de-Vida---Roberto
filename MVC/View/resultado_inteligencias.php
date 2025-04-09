@@ -63,7 +63,7 @@ console.log(testeId);
                             myChart.data.datasets[0].data = Object.values(data.resultado);
                             myChart.update();
                             
-                            // Atualiza o tipo de inteligência dominante
+                            
                             document.getElementById("resultado_tipo").innerText = "Você é mais: " + data.tipo;
                         }
                     })

@@ -45,68 +45,53 @@ $frase_motivacional = "O sucesso é a soma de pequenos esforços repetidos dia a
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
-
-    <!-- Link para o arquivo CSS -->
-    <link rel="stylesheet" href="/MVC/View/css/Página_inicial.css">
+    <title>Dashboard Principal</title>
 </head>
 <body>
 
 <!-- Cabeçalho com dados do usuário -->
-<header class="header">
-    <h1 class="header__title">Bem-vindo, <?php echo htmlspecialchars($usuario['nome']); ?>!</h1>
-    <img class="header__photo" src="<?php echo htmlspecialchars($foto_perfil); ?>" alt="Foto de Perfil" width="150">
-    <p class="header__birthdate">Data de nascimento: <?php echo date("d/m/Y", strtotime($usuario['data_nascimento'])); ?></p>
-    <form class="header__logout-form" action="logout.php" method="POST">
-        <button class="header__logout-button" type="submit">Sair da Conta</button>
+<header>
+    <h1>Bem-vindo, <?php echo htmlspecialchars($usuario['nome']); ?>!</h1>
+    <img src="<?php echo htmlspecialchars($foto_perfil); ?>" alt="Foto de Perfil" width="150">
+    <p>Data de nascimento: <?php echo date("d/m/Y", strtotime($usuario['data_nascimento'])); ?></p>
+    <form action="logout.php" method="POST">
+        <button type="submit">Sair da Conta</button>
     </form>
 </header>
 
 <!-- Resumo do Perfil -->
-<section class="section section--summary">
-    <h2 class="section__title">Resumo do Perfil</h2>
-    <p class="section__content"><?php echo $resumo_perfil; ?></p>
-</section>
+<h2>Resumo do Perfil</h2>
+<p><?php echo $resumo_perfil; ?></p>
 
 <!-- Gráfico de Progresso do Plano de Ação -->
-<section class="section section--progress">
-    <h2 class="section__title">Progresso do Plano de Ação</h2>
-    <div class="progress">
-        <p class="progress__text">Percentual de metas concluídas: <?php echo $progresso_plano; ?>%</p>
-        <div class="progress__bar-container">
-            <div class="progress__bar" style="width: <?php echo $progresso_plano; ?>%;"></div>
-        </div>
-    </div>
-</section>
+<h2>Progresso do Plano de Ação</h2>
+<p>Percentual de metas concluídas: <?php echo $progresso_plano; ?>%</p>
+
+    <div style="width: <?php echo $progresso_plano; ?>%; background-color: #4CAF50; height: 100%;"></div>
+</div>
 
 <!-- Próximas Tarefas/Metas -->
-<section class="section section--tasks">
-    <h2 class="section__title">Próximas Tarefas/Metas</h2>
-    <ul class="tasks__list">
-        <?php foreach ($tarefas as $tarefa): ?>
-            <li class="tasks__item"><?php echo htmlspecialchars($tarefa['meta']); ?> (Prazo: <?php echo htmlspecialchars($tarefa['prazo']); ?>)</li>
-        <?php endforeach; ?>
-    </ul>
-</section>
+<h2>Próximas Tarefas/Metas</h2>
+<ul>
+    <?php foreach ($tarefas as $tarefa): ?>
+        <li><?php echo htmlspecialchars($tarefa['meta']); ?> (Prazo: <?php echo htmlspecialchars($tarefa['prazo']); ?>)</li>
+    <?php endforeach; ?>
+</ul>
 
 <!-- Resumo dos Resultados dos Testes -->
-<section class="section section--results">
-    <h2 class="section__title">Resumo dos Resultados dos Testes</h2>
-    <p class="results__text">Resultado do Teste de Personalidade: <?php echo htmlspecialchars($resultados_testes['personalidade']); ?></p>
-    <p class="results__text">Resultado do Teste de Inteligência: <?php echo htmlspecialchars($resultados_testes['inteligencia']); ?></p>
-</section>
+<h2>Resumo dos Resultados dos Testes</h2>
+<p>Resultado do Teste de Personalidade: <?php echo htmlspecialchars($resultados_testes['personalidade']); ?></p>
+<p>Resultado do Teste de Inteligência: <?php echo htmlspecialchars($resultados_testes['inteligencia']); ?></p>
 
 <!-- Frases e Pensamentos Motivacionais -->
-<section class="section section--quotes">
-    <h2 class="section__title">Frases e Pensamentos</h2>
-    <blockquote class="quote">
-        "<?php echo $frase_motivacional; ?>"
-    </blockquote>
-</section>
+<h2>Frases e Pensamentos</h2>
+<blockquote>
+    "<?php echo $frase_motivacional; ?>"
+</blockquote>
 
-<!-- Rodapé com Direitos Autorais -->
-<footer class="footer">
-    <p class="footer__text">&copy; 2025 Roberto. Todos os direitos reservados.</p>
+<!-- Rodapé -->
+<footer>
+    <p>&copy; 2025 Roberto. Todos os direitos reservados.</p>
 </footer>
 
 </body>
