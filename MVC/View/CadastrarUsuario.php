@@ -63,38 +63,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <style>
     button.voltar {
-    background-color: #0e0090;  
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    padding: 12px;
-    margin-top: 10px;
-}
+        background-color: #7e7e86;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        padding: 12px;
+        margin-top: 10px;
+    }
 
-button.voltar:hover {
-    background-color:rgb(99, 85, 224);
-}
+    button.voltar:hover {
+        background-color: #7e7e86;
+    }
 
-input[type="submit"] {
-    background-color: #0e0090;  
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    padding: 12px;
-}
+    input[type="submit"] {
+        background-color: #7e7e86;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        padding: 12px;
+    }
 
-input[type="submit"]:hover {
-    background-color:rgb(99, 85, 224);
-   font-size: 20px;
-   transition: 0.9s;
-}
-
-
+    input[type="submit"]:hover {
+        background-color: #7e7e86;
+        font-size: 20px;
+        transition: 0.9s;
+    }
 </style>
+
 <body>
 
     <!-- Título da Página -->
