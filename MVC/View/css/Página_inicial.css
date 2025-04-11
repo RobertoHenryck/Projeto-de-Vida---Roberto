@@ -1,187 +1,42 @@
-/* Reseta o margin e padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap');
 
-/* Estilos gerais do body */
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f9;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    padding: 20px;
+body{
+    font-family: "Roboto", sans-serif;
 }
-
-/* Navbar */
-.navbar {
-    width: 100%;
-    background-color: #333;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.navbar__container {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
+    background-color: azure;
+    border-bottom: 2px solid #ccc;
 }
 
-.navbar__logo {
+header h1 {
     font-size: 24px;
-    color: white;
-    text-decoration: none;
+    color: #333;
 }
 
-.navbar__right {
+.header-direita {
     display: flex;
+    flex-direction: column; 
     align-items: center;
+    gap: 10px;
 }
 
-.navbar__link {
-    color: white;
-    text-decoration: none;
-    margin-right: 20px;
-    font-size: 16px;
-}
-
-.navbar__link:hover {
-    text-decoration: underline;
-}
-
-.navbar__photo {
-    width: 40px;
-    height: 40px;
+.foto-perfil {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    margin-left: 15px;
+    object-fit: cover;
+    border: 2px solid #969696;
+}
+.titulo{
+    font-size: 30px;
 }
 
-/* Cabeçalho com dados do usuário */
-.header {
-    width: 100%;
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
 
-.header__title {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-}
 
-.header__birthdate {
-    font-size: 14px;
-    color: #777;
-}
 
-.header__logout-form {
-    margin-top: 15px;
-}
 
-.header__logout-button {
-    background-color: rgb(0, 0, 0);
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.header__logout-button:hover {
-    background-color: #333;
-}
-
-/* Estilos das seções (Resumo, Progresso, etc.) */
-.section {
-    width: 100%;
-    max-width: 800px;
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.section__title {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.section__content, .quote {
-    font-size: 16px;
-    color: #555;
-}
-
-.progress {
-    margin-top: 10px;
-}
-
-.progress__text {
-    font-size: 16px;
-    color: #333;
-}
-
-.progress__bar-container {
-    width: 100%;
-    height: 20px;
-    background-color: #ddd;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.progress__bar {
-    height: 100%;
-    background-color: #4CAF50;
-    border-radius: 5px;
-}
-
-.tasks__list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.tasks__item {
-    font-size: 16px;
-    color: #555;
-    margin: 5px 0;
-}
-
-.results__text {
-    font-size: 16px;
-    color: #555;
-}
-
-.quote {
-    font-size: 18px;
-    color: #007bff;
-    font-style: italic;
-    text-align: center;
-    margin-top: 15px;
-}
-
-/* Rodapé */
-.footer {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    font-size: 14px;
-}
-
-.footer__text {
-    margin: 0;
-}

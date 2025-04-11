@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php'; 
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $data_nascimento = $_POST['data_nascimento'];
     $senha = $_POST['senha'];
-    
+
     if (isset($_GET['logout'])) {
         session_unset();
         session_destroy();
@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,26 +61,62 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Cadastro</title>
     <link rel="stylesheet" href="path_to_your_css_file.css"> <!-- Referência ao arquivo CSS -->
 </head>
+<style>
+    button.voltar {
+    background-color: #0e0090;  
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+button.voltar:hover {
+    background-color:rgb(99, 85, 224);
+}
+
+input[type="submit"] {
+    background-color: #0e0090;  
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+input[type="submit"]:hover {
+    background-color:rgb(99, 85, 224);
+   font-size: 20px;
+   transition: 0.9s;
+}
+
+
+</style>
 <body>
 
-<!-- Título da Página -->
-<h2>Crie sua conta</h2>
+    <!-- Título da Página -->
 
-<form method="POST">
-    <input type="text" name="nome" placeholder="Nome" required><br>
-    <input type="email" name="email" placeholder="Email" required><br>
-    <input type="date" name="data_nascimento" placeholder="Data de Nascimento" required><br>
-    <input type="password" name="senha" placeholder="Senha" required><br>
-    <input type="submit" value="Cadastrar"><br>
-</form>
 
-<!-- Exibindo mensagem de erro -->
-<?php if (isset($erro)): ?>
-    <p class="error"><?php echo $erro; ?></p>
-<?php endif; ?>
+    <form method="POST">
+        <h2>Crie sua conta</h2>
+        <input type="text" name="nome" placeholder="Nome" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="date" name="data_nascimento" placeholder="Data de Nascimento" required><br>
+        <input type="password" name="senha" placeholder="Senha" required><br>
+        <input type="submit" value="Cadastrar"><br>
+    </form>
 
-<!-- Botão para voltar ao login -->
-<button class="voltar" onclick="window.location.href='index.php'">Voltar para o Login</button>
+    <!-- Exibindo mensagem de erro -->
+    <?php if (isset($erro)): ?>
+        <p class="error"><?php echo $erro; ?></p>
+    <?php endif; ?>
+
+    <!-- Botão para voltar ao login -->
+    <button class="voltar" onclick="window.location.href='index.php'">Voltar para o Login</button>
 
 </body>
+
 </html>

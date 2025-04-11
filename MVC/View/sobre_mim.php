@@ -9,59 +9,51 @@ if (!isset($_SESSION['usuario_id'])) {
 
 $user_id = $_SESSION['usuario_id'];
 
-// Se o formulário for enviado, salva o texto na tabela 'sobre_mim'
+// Se o formulário for enviado, atualiza o campo 'sobre_mim' na tabela 'users'
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sobre_mim = $_POST['sobre_mim'] ?? '';
 
-    // Salva os dados na tabela 'sobre_mim'
-    $sql = "INSERT INTO sobre_mim (user_id, sobre_mim) VALUES (:user_id, :sobre_mim)
-            ON DUPLICATE KEY UPDATE sobre_mim = :sobre_mim";
+    $sql = "UPDATE users SET sobre_mim = :sobre_mim WHERE id = :user_id";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':user_id', $user_id);
     $stmt->bindParam(':sobre_mim', $sobre_mim);
+    $stmt->bindParam(':user_id', $user_id);
 
     if ($stmt->execute()) {
-        // Redireciona para a página de perfil após salvar
-        header("Location: perfil.php");
+        header("Location: perfil.php"); // Redireciona para o perfil
         exit;
     } else {
-        $erro = "Erro ao salvar o texto.";
+        $erro = "Erro ao atualizar o campo 'Sobre Mim'.";
     }
 }
 
-// Buscar o texto "Sobre Mim" do usuário
-$sql = "SELECT sobre_mim FROM sobre_mim WHERE user_id = :user_id LIMIT 1";
+// Buscar o campo 'sobre_mim' da tabela 'users'
+$sql = "SELECT sobre_mim FROM users WHERE id = :user_id LIMIT 1";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
-$sobre_mim_result = $stmt->fetch(PDO::FETCH_ASSOC);
-$sobre_mim_atual = $sobre_mim_result ? $sobre_mim_result['sobre_mim'] : ''; // Se não encontrar, define como vazio.
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+$sobre_mim_atual = $usuario ? $usuario['sobre_mim'] : '';
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Sobre Mim</title>
+    <title>Editar Sobre Mim</title>
 </head>
 <body>
 
-    <h2>Sobre Mim</h2>
+<h2>Sobre Mim</h2>
 
-    <!-- Exibe erro se houver -->
-    <?php if (isset($erro)) echo "<p style='color: red;'>$erro</p>"; ?>
+<?php if (isset($erro)) echo "<p style='color: red;'>$erro</p>"; ?>
 
-    <!-- Formulário para editar e salvar o texto sobre mim -->
-    <form method="POST">
-        <label for="sobre_mim">Escreva algo sobre você:</label><br>
-        <textarea name="sobre_mim" id="sobre_mim" rows="5" cols="50" required><?= htmlspecialchars($sobre_mim_atual ?? '') ?></textarea><br><br>
+<form method="POST">
+    <label for="sobre_mim">Escreva algo sobre você:</label><br>
+    <textarea name="sobre_mim" id="sobre_mim" rows="5" cols="50" required><?= htmlspecialchars($sobre_mim_atual) ?></textarea><br><br>
+    <button type="submit">Salvar</button>
+</form>
 
-        <button type="submit">Salvar</button>
-    </form>
-
-    <!-- Exibe a descrição atual se houver -->
-    <h3>O que você escreveu sobre você:</h3>
-    <p><?= htmlspecialchars($sobre_mim_atual ?? 'Você ainda não escreveu nada sobre si mesmo.') ?></p>
+<h3>Pré-visualização:</h3>
+<p><?= htmlspecialchars($sobre_mim_atual) ?: 'Você ainda não escreveu nada sobre si mesmo.' ?></p>
 
 </body>
 </html>

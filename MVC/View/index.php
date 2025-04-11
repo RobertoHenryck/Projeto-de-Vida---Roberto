@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    // Buscar usuário pelo email
     $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':email', $email);
@@ -15,12 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->rowCount() > 0) {
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Verificar a senha
         if (password_verify($senha, $usuario['senha'])) {
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario_nome'] = $usuario['nome'];
             $_SESSION['usuario_email'] = $usuario['email'];
-            $_SESSION['data_nascimento'] = $usuario['data_nascimento']; // Adicionado
+            $_SESSION['data_nascimento'] = $usuario['data_nascimento'];
 
             header('Location: PaginaInicial.php');
             exit;
@@ -40,7 +38,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../View/css/index.css">
     <title>Login</title>
-  
+
+ <style>
+    
+    button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0e0090;
+    border: none;
+    border-radius: 5px;
+    color:white;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover{
+    background-color:rgb(99, 85, 224);
+   font-size: 20px;
+   transition: 0.9s;
+}
+ </style>
+    
 </head>
 <body>
 
@@ -50,12 +67,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="email" name="email" placeholder="Email" required>
     <p>Senha</p>
     <input type="password" name="senha" placeholder="Senha" required>
-    <button type="submit">Entrar</button>
+    <div class="botao">
+            <button  type="submit">Entrar</button>
+    </div>
 
 
-<p><a href="CadastrarUsuario.php">Não tem uma conta? Cadastre-se aqui</a></p>
+  
+    <?php if (isset($erro)) echo "<div class='mensagem-erro'><p>$erro</p></div>"; ?>
+
+    <p><a href="CadastrarUsuario.php">Não tem uma conta? Cadastre-se aqui</a></p>
 </form>
-<?php if (isset($erro)) echo "<p>$erro</p>"; ?>
 
 </body>
 </html>

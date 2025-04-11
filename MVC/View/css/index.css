@@ -1,12 +1,16 @@
- /* Reseta o margin e padding */
- * {
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap');
+
+
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial;
+    font-family: "Roboto";
     background: #f4f4f9;
     display: flex;
     justify-content: center;
@@ -14,12 +18,19 @@ body {
     height: 100vh;
 }
 
-/* Estilo para o formulário de login */
+.mensagem-erro p{
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+
 form {
     background-color: #fff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(72, 72, 72, 0.1);
     width: 300px;
     text-align: center;
 }
@@ -39,16 +50,7 @@ input {
     font-size: 16px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color:rgb(0, 0, 0);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
+
 
 
 
@@ -61,9 +63,10 @@ a {
 
 a:hover {
     text-decoration: none;
-    
+
 }
-a{
+
+a {
     color: black;
 }
 
@@ -71,6 +74,5 @@ a{
 p {
     color: rgb(0, 0, 0);
     font-size: 14px;
-    display: flex;
-    justify-content: left;
+    text-align: center;
 }
