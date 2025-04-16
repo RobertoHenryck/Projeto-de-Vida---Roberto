@@ -25,42 +25,35 @@ $sobre_mim_atual = $usuario['sobre_mim'] ?? '';
 <html lang="pt-br">
 <link rel="stylesheet" href="../View/css/perfil.css">
 <style>
-    button,
-    input {
-        width: 100%;
-        padding: 10px;
-        background-color: #7e7e86;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
+    .upload-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 20px;
     }
 
-    button:hover {
-        background-color: 7e7e86;
-        font-size: 20px;
-        transition: 0.9s;
-    }
-
-    .inputfile {
+    .file-input {
         display: none;
     }
 
-    .custom-file-upload {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #7e7e86;  
+    .file-label {
+        background-color: #7e7e86;
         color: white;
-        border-radius: 5px;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 600;
         cursor: pointer;
-        font-weight: bold;
-        font-family: sans-serif;
-        transition: background 0.3s ease;
+        transition: background-color 0.3s ease;
     }
 
-    .custom-file-upload:hover {
-        background-color: #e06620;
+    .file-label:hover {
+        background-color: #7e7e86;
+    }
+
+    .file-text {
+        color: #666;
+        font-size: 14px;
+        font-style: italic;
     }
 </style>
 
@@ -88,9 +81,13 @@ $sobre_mim_atual = $usuario['sobre_mim'] ?? '';
                     <img src="<?= htmlspecialchars($foto_perfil) ?>" alt="Foto de Perfil" width="150"><br>
                     <br>
                     <form action="atualizar_foto.php" method="POST" enctype="multipart/form-data">
+                        <div class="upload-wrapper">
+                            <input type="file" id="arquivo" name="arquivo" class="file-input">
+                            <label for="arquivo" class="file-label">Escolher arquivo</label>
 
-                        <input type="file" name="foto" class="inputfile" required>
-                        <label for="arquivo" class="custom-file-upload">Escolher arquivo</label>
+                        </div>
+
+
                         <br>
                         <br>
                         <button type="submit">Atualizar Foto</button>
