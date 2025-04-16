@@ -43,9 +43,6 @@ header h1 {
     border: 2px solid #969696;
 }
 
-.titulo {
-    font-size: 30px;
-}
 
 .titulo2 {
     display: flex;
@@ -55,12 +52,7 @@ header h1 {
 
 }
 
-.caixas {
-    display: flex;
-   justify-content: space-evenly;
-    margin: 0 auto;
-   
-}
+
 
 .bloco1,
 .bloco2,
@@ -69,12 +61,33 @@ header h1 {
     flex-direction: column;
     text-align: center;
     margin-top: 50px;
- 
+    box-shadow: 0 0 8px 1px#c4c9cf;
+    border: 0.2px solid #ced4da;
+    width: 20%;
+    justify-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+    transition: transform 1s ease;
+    border-radius: 15px;
+
 }
 
+
+.bloco1:hover,
+.bloco2:hover,
+.bloco3:hover {
+    transform: scale(1.1);
+   
+}
+
+.bloco1,
+.bloco2,
+.bloco3,
 p {
-    width: 300px;
-    height: 150px;
+    display: flex;
+    justify-content: center;
+    text-align: justify;
 }
 
 img {
@@ -83,7 +96,29 @@ img {
     justify-content: center;
     margin: 0 auto;
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
+}
+
+h2,
+h3 {
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+    padding: 20px;
+    margin: 2px;
+}
+
+h1 {
+    margin: 50px;
+}
+footer{
+    background-color:#ced4da ;
+    margin-top: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -32,9 +32,16 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
 </head>
 
 <body>
-
-
     <style>
+        .caixas {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 0 auto;
+            padding: 20px;
+            height:500px;
+       
+        }
+
         button {
             border: none;
             background: none;
@@ -44,6 +51,7 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
             color: black;
             font-size: 30px;
         }
+        
     </style>
 
 
@@ -71,22 +79,22 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
         <div class="caixas">
 
             <div class="bloco1">
-                <h2>Teste de Inteligência</h2>
-                <a href="teste_inteligencia.php">Faça agora!</a>
-                <a href="teste_inteligencia.php">  <img src="../../img/inteligencia.png" alt="" width="200px" height="200px"></a>
+               <h2>Teste de Inteligência</h2>
+                <h3><a href="teste_inteligencia.php">Faça agora!</a></h3>
+                <a href="teste_inteligencia.php"> <img src="../../img/inteligencia.png" alt="" width="200px" height="200px"></a>
                 <p>O teste de inteligência avalia habilidades cognitivas, como lógica e resolução de problemas, ajudando no autoconhecimento e desenvolvimento pessoal.</p>
             </div>
 
             <div class="bloco2">
                 <h2>Teste de Personalidade</h2>
-                <a href="teste_personalidade.php">Faça agora!</a>
-                <a href="teste_personalidade.php"></a>  <img src="../../img/personalidade.png" alt="" width="200px" height="200px"></a>
+                <h3><a href="teste_personalidade.php">Faça agora!</a></h3>
+                <a href="teste_personalidade.php"> <img src="../../img/personalidade.png" alt="" width="200px" height="200px"></a>
                 <p>O teste de personalidade avalia traços psicológicos, como comportamentos e emoções, ajudando a entender melhor preferências e relações interpessoais.</p>
             </div>
             <div class="bloco3">
-                <h2>Planejamento do Futuro</h2>
-                <a href="planejamento_futuro.php">Planeje seu Futuro</a>
-                <a href="planejamento_futuro.php"></a>  <img src="../../img/planejamento do futuro.png" alt="" width="200px" height="200px"></a>
+                <h2>Planeje o Futuro</h2>
+                <h3><a href="planejamento_futuro.php">Planeje seu Futuro</a></h3>
+                <a href="planejamento_futuro.php"> <img src="../../img/planejamento do futuro.png" alt="" width="200px" height="200px"></a>
                 <p>O teste de personalidade avalia traços psicológicos, como comportamentos e emoções, ajudando a entender melhor preferências e relações interpessoais.</p>
             </div>
 
@@ -98,7 +106,7 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
 
 
     <footer>
-        <p>&copy; 2025 Roberto. Todos os direitos reservados.</p>
+        <p>&copy; 2025 André. Todos os direitos reservados.</p>
     </footer>
 
 </body>

@@ -48,7 +48,7 @@ $sobre_mim_atual = $usuario ? $usuario['sobre_mim'] : '';
 
 <form method="POST">
     <label for="sobre_mim">Escreva algo sobre você:</label><br>
-    <textarea name="sobre_mim" id="sobre_mim" rows="5" cols="50" required><?= htmlspecialchars($sobre_mim_atual) ?></textarea><br><br>
+    <textarea name="sobre_mim" id="sobre_mim" rows="5" cols="50" maxlength="500"  required><?= htmlspecialchars($sobre_mim_atual) ?></textarea><br><br>
     <button type="submit">Salvar</button>
 </form>
 
