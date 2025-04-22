@@ -1,22 +1,20 @@
 <?php
 session_start();
-require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
-// Verificar se o usuário está autenticado
 if (!isset($_SESSION['usuario_id'])) {
     die("Erro: Usuário não autenticado.");
 }
 
 $user_id = $_SESSION['usuario_id'];
 
-// Definir as áreas do plano de ação
-$areas = ['Relacionamento Familiar', 'Estudos', 'Saúde', 'Futura Profissão', 'Religião', 'Amigos', 'Namorado(a)', 'Comunidade', 'Tempo Livre'];
+// Áreas de plano de ação
+$areas = ['Relacionamento Familiar', 'Estudos'];
 
-// Buscar os dados do plano de ação do usuário
 $planos_acao = [];
 
 foreach ($areas as $area) {
-    $area_underscore = str_replace(' ', '_', $area); // Substituindo espaços por underscores
+    $area_underscore = str_replace(' ', '_', $area);
     $sql = "SELECT descricao, prazo, passo1, passo2, passo3 FROM plano_acao WHERE user_id = :user_id AND area = :area";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':user_id', $user_id);
@@ -24,7 +22,6 @@ foreach ($areas as $area) {
     $stmt->execute();
     $planos_acao[$area_underscore] = $stmt->fetch(PDO::FETCH_ASSOC);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -32,45 +29,50 @@ foreach ($areas as $area) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultado do Plano de Ação</title>
+    <link rel="stylesheet" href="../View/css/resultado_plano_acao.css">
+    <title>Plano de Ação - Listagem</title>
+    <style>
+    a{
+        display:flex;
+        justify-content: center;
+        text-decoration: none;
+        color:black;
+    }
+</style>
 </head>
 <body>
+    <h1>Planos de Ação</h1>
 
-    <h1>Resultado do Plano de Ação</h1>
-
-    <?php foreach ($areas as $area): ?>
-        <?php
-            // Substituindo espaços por underscores para criar a chave do array
-            $area_underscore = str_replace(' ', '_', $area);
-            // Pegando os dados do plano de ação para esta área
-            $plano = $planos_acao[$area_underscore] ?? null;
-        ?>
-
-        <h2><?php echo htmlspecialchars($area); ?></h2>
-        
-        <?php if ($plano): ?>
-            <table border="1">
+    <!-- Tabela de dados -->
+    <table>
+        <thead>
+            <tr>
+                <th>Área</th>
+                <th>Descrição</th>
+                <th>Prazo</th>
+                <th>Passo 1</th>
+                <th>Passo 2</th>
+                <th>Passo 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($areas as $area): ?>
+                <?php $area_underscore = str_replace(' ', '_', $area); ?>
                 <tr>
-                    <th>Descrição</th>
-                    <th>Prazo</th>
-                    <th>Passo 1</th>
-                    <th>Passo 2</th>
-                    <th>Passo 3</th>
+                    <td><?php echo htmlspecialchars($area); ?></td>
+                    <td><?php echo htmlspecialchars($planos_acao[$area_underscore]['descricao'] ?? 'Não informado'); ?></td>
+                    <td><?php echo htmlspecialchars($planos_acao[$area_underscore]['prazo'] ?? 'Não informado'); ?></td>
+                    <td><?php echo htmlspecialchars($planos_acao[$area_underscore]['passo1'] ?? 'Não informado'); ?></td>
+                    <td><?php echo htmlspecialchars($planos_acao[$area_underscore]['passo2'] ?? 'Não informado'); ?></td>
+                    <td><?php echo htmlspecialchars($planos_acao[$area_underscore]['passo3'] ?? 'Não informado'); ?></td>
                 </tr>
-                <tr>
-                    <td><?php echo htmlspecialchars($plano['descricao']); ?></td>
-                    <td><?php echo htmlspecialchars($plano['prazo']); ?></td>
-                    <td><?php echo htmlspecialchars($plano['passo1']); ?></td>
-                    <td><?php echo htmlspecialchars($plano['passo2']); ?></td>
-                    <td><?php echo htmlspecialchars($plano['passo3']); ?></td>
-                </tr>
-            </table>
-        <?php else: ?>
-            <p>Você ainda não preencheu um plano de ação para esta área.</p>
-        <?php endif; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
-        <hr>
-    <?php endforeach; ?>
+    <p>Essa é a lista dos seus planos de ação. Se necessário, você pode editá-los a qualquer momento.</p>
 
+    <a href="editar_plano_acao.php">Editar Plano de Ação</a>
+    <a href="perfil.php">Voltar</a>
 </body>
 </html>

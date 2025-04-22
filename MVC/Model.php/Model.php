@@ -59,5 +59,15 @@ class Model
             ':autovalorizacao' => $autovalorizacao
         ]);
     }
+
+    // Método para listar dados de 'Quem Sou Eu' com base no user_id
+    public function listarQuemSou($user_id) {
+        // Aqui, utilize a tabela correta "quemsou" (ou "quem_sou" dependendo de sua necessidade)
+        $sql = "SELECT * FROM quemsou WHERE user_id = :user_id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":user_id" => $user_id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);  // Retorna o registro encontrado ou null
+    }
 }
 ?>

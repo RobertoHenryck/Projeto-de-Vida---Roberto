@@ -1,5 +1,5 @@
 <?php
-require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\MVC\Model.php\Model.php';
+require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\MVC\Model.php\Model.php';
 
 class Controller
 {
@@ -7,6 +7,7 @@ class Controller
 
     public function __construct($pdo)
     {
+        // Passa o PDO para o modelo
         $this->Model = new Model($pdo);
     }
 
@@ -27,6 +28,11 @@ class Controller
             $minha_vida_escolar, $visao_fisica, $visao_intelectual, $visao_emocional, $visao_pessoas_sobre_mim, 
             $autovalorizacao
         );
+    }
+
+    // Método que chama o Model para listar os dados
+    public function listarQuemSou($user_id) {
+        return $this->Model->listarQuemSou($user_id);
     }
 }
 ?>

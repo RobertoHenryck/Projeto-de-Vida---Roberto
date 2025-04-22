@@ -1,5 +1,5 @@
 <?php
-require 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 if (isset($_GET['id'])) {
     $sql = "SELECT resultado FROM teste_inteligencia WHERE id = :id";

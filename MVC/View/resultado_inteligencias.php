@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
@@ -27,6 +27,7 @@ if (!$testes) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../View/css/resultado_inteligencias.css">
     <title>Resultado do Teste de Inteligências</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -35,10 +36,20 @@ if (!$testes) {
             max-height: 300px;
             margin: 20px auto;
         }
+        header{
+            display:flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 400px;
+            margin: 0 auto;
+        }
+        h2{
+            text-align: center;}
+    
     </style>
 </head>
 <body>
-
+    <header>
     <h2>Selecione um teste anterior:</h2>
     <select id="selecionar_teste">
         <option value="">Escolha um teste</option>
@@ -46,8 +57,8 @@ if (!$testes) {
             <option value="<?= $teste['id'] ?>">Teste de <?= date("d/m/Y H:i", strtotime($teste['data'])) ?></option>
         <?php endforeach; ?>
     </select>
-
-    <h2 id="resultado_tipo">Tipo de inteligência:</h2>
+</header>
+   
     <canvas id="graficoInteligencias"></canvas>
 
     <script>
@@ -92,6 +103,7 @@ console.log(testeId);
             }
         });
     </script>
-
+ <h2 id="resultado_tipo">Tipo de inteligência:</h2>
+ <a href="perfil.php">Voltar</a>
 </body>
 </html>

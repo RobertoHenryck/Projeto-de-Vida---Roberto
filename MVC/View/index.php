@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     cursor: pointer;
 }
 button:hover{
-    background-color: 7e7e86;
+     background-color: #7e7e86;
    font-size: 20px;
    transition: 0.9s;
 }

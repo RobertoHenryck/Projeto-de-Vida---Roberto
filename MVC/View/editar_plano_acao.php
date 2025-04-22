@@ -33,12 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         
         if ($stmt->rowCount() > 0) {
-            // Corrigido o nome da coluna de 'update_at' para 'updated_at'
+            // Atualizar plano de ação existente
             $sql = "UPDATE plano_acao SET descricao = :descricao, prazo = :prazo, 
                     passo1 = :passo1, passo2 = :passo2, passo3 = :passo3, 
                     updated_at = current_timestamp() WHERE user_id = :user_id AND area = :area";
         } else {
-            // Corrigido o nome da coluna de 'update_at' para 'updated_at'
+            // Inserir novo plano de ação
             $sql = "INSERT INTO plano_acao (user_id, area, descricao, prazo, 
                     passo1, passo2, passo3, created_at, updated_at) 
                     VALUES (:user_id, :area, :descricao, :prazo, :passo1, :passo2, :passo3, current_timestamp(), current_timestamp())";
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':passo3', $passo3);
         $stmt->execute();
     }
-    header('Location:resultado_plano_acao.php');
+    header('Location: resultado_plano_acao.php');
     exit;
 }
 
@@ -77,17 +77,18 @@ foreach ($areas as $area) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../View/css/plano_acao.css">
-    <title>Plano de Ação</title>
+    <title>Editar Plano de Ação</title>
     <style>
-        h1 {
-            display: flex;
-            justify-content: center;
-            padding: 15px;
-        }
-    </style>
+    a{
+        display:flex;
+        justify-content: center;
+        text-decoration: none;
+        color:black;
+    }
+</style>
 </head>
 <body>
-    <h1>Plano de Ação - Tomando Decisões e Estabelecendo Metas</h1>
+    <h1>Editar Plano de Ação</h1>
 
     <form method="POST">
         <?php foreach ($areas as $area): ?>
@@ -96,25 +97,26 @@ foreach ($areas as $area) {
             <h2><?php echo htmlspecialchars($area); ?></h2>
 
             <label for="descricao_<?php echo $area_underscore; ?>">Descrição:</label><br>
-            <input type="text" name="descricao_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['descricao'] ?? ''); ?>" required><br><br>
+            <input type="text" name="descricao_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['descricao'] ?? ''); ?>" required><br>
 
             <label for="prazo_<?php echo $area_underscore; ?>">Prazo:</label><br>
-            <input type="date" name="prazo_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['prazo'] ?? ''); ?>" required><br><br>
+            <input type="date" name="prazo_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['prazo'] ?? ''); ?>" required><br>
 
             <h3>Passos:</h3>
             <label for="passo1_<?php echo $area_underscore; ?>">Passo 1:</label><br>
-            <input type="text" name="passo1_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['passo1'] ?? ''); ?>"><br><br>
+            <input type="text" name="passo1_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['passo1'] ?? ''); ?>"><br>
 
             <label for="passo2_<?php echo $area_underscore; ?>">Passo 2:</label><br>
-            <input type="text" name="passo2_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['passo2'] ?? ''); ?>"><br><br>
+            <input type="text" name="passo2_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['passo2'] ?? ''); ?>"><br>
 
             <label for="passo3_<?php echo $area_underscore; ?>">Passo 3:</label><br>
-            <input type="text" name="passo3_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['passo3'] ?? ''); ?>"><br><br>
+            <input type="text" name="passo3_<?php echo $area_underscore; ?>" value="<?php echo htmlspecialchars($planos_acao[$area_underscore]['passo3'] ?? ''); ?>"><br>
 
             <hr>
         <?php endforeach; ?>
 
         <button type="submit">Salvar Plano de Ação</button>
     </form>
+    <a href="perfil.php">Voltar</a>
 </body>
 </html>

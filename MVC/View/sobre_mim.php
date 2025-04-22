@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
@@ -36,6 +36,7 @@ $sobre_mim_atual = $usuario ? $usuario['sobre_mim'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+<link rel="stylesheet" href="../View/css/sobre_mim.css">
 <head>
     <meta charset="UTF-8">
     <title>Editar Sobre Mim</title>
@@ -52,8 +53,6 @@ $sobre_mim_atual = $usuario ? $usuario['sobre_mim'] : '';
     <button type="submit">Salvar</button>
 </form>
 
-<h3>Pré-visualização:</h3>
-<p><?= htmlspecialchars($sobre_mim_atual) ?: 'Você ainda não escreveu nada sobre si mesmo.' ?></p>
 
 </body>
 </html>

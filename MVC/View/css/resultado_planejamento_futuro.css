@@ -13,41 +13,52 @@ body {
     color: #333;
 }
 
+/* Título principal */
 h1 {
     text-align: center;
-    color: #333;
-    padding-top: 20px;
+    padding: 30px 0;
     font-size: 2rem;
+    color: #333;
 }
 
+/* Tabela de dados */
 table {
     width: 90%;
-    max-width: 900px;
-    margin: 20px auto;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
     border-collapse: collapse;
-    background-color: #fff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
 }
 
-th, td {
+/* Cabeçalho da tabela */
+th {
+    background-color: #7e7e86;
+    color: #ffffff;
+    font-weight: 600;
     padding: 16px;
     text-align: left;
 }
 
-th {
-    background-color: #7e7e86;
-    color: white;
-    font-weight: bold;
-}
-
+/* Linhas da tabela */
 td {
     background-color: #f9f9f9;
     color: #333;
+    padding: 16px;
     border-bottom: 1px solid #ddd;
 }
 
+/* Parágrafo informativo */
+p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 40px;
+}
+
+/* Link voltar */
 a {
     display: block;
     width: fit-content;
@@ -58,31 +69,9 @@ a {
     padding: 12px 24px;
     border-radius: 6px;
     font-weight: 500;
-    text-align: center;
     transition: background-color 0.3s ease;
 }
 
 a:hover {
     background-color: #6a6a6f;
-}
-
-p {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #666;
-}
-
-@media (max-width: 768px) {
-    table {
-        width: 100%;
-        margin: 20px 10px;
-    }
-
-    h1 {
-        font-size: 1.6rem;
-    }
-
-    a {
-        padding: 10px 20px;
-    }
 }

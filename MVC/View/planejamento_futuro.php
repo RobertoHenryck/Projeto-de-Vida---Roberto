@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ]);
 
  
-    header('Location: resultado.php');
+    header('Location: resultado_planejamento_futuro.php');
     exit;
 }
 ?>
@@ -58,15 +58,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="planejamento_futuro.css">
+    <link rel="stylesheet" href="../View/css/planejamento_futuro.css">
     <title>Formulário de Projeto de Vida</title>
    
 </head>
 <body>
 
   
-        <h1>Formulário de Projeto de Vida</h1>
-        <form method="POST">
+    
+        <form method="POST"> 
+               <h1>Formulário de Projeto de Vida</h1>
             <label for="minhas_aspiracoes">Minhas Aspirações</label>
             <textarea name="minhas_aspiracoes" required></textarea>
 
