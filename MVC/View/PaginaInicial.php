@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_nome'])) {
@@ -38,8 +38,8 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
             justify-content: space-evenly;
             margin: 0 auto;
             padding: 20px;
-            height:500px;
-       
+            height: 500px;
+
         }
 
         button {
@@ -51,7 +51,6 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
             color: black;
             font-size: 30px;
         }
-        
     </style>
 
 
@@ -79,7 +78,7 @@ $foto_perfil = !empty($usuario['foto_perfil']) ? 'users/' . $usuario['foto_perfi
         <div class="caixas">
 
             <div class="bloco1">
-               <h2>Teste de Inteligência</h2>
+                <h2>Teste de Inteligência</h2>
                 <h3><a href="teste_inteligencia.php">Faça agora!</a></h3>
                 <a href="teste_inteligencia.php"> <img src="../../img/inteligencia.png" alt="" width="200px" height="200px"></a>
                 <p>O teste de inteligência avalia habilidades cognitivas, como lógica e resolução de problemas, ajudando no autoconhecimento e desenvolvimento pessoal.</p>

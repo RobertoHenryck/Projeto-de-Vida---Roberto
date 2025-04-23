@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {

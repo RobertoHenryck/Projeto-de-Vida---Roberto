@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
-require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\MVC\Controller\Controller.php';
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\MVC\Controller\Controller.php';
 
 $controller = new Controller($pdo);
 $user_id = $_SESSION['usuario_id'];

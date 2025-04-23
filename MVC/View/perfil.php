@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 if (!isset($_SESSION['usuario_id'])) {
     die("Erro: Usuário não autenticado.");
@@ -57,7 +58,7 @@ $sobre_mim_atual = $usuario['sobre_mim'] ?? '';
         height: 150px;
         border-radius: 100%;
     }
-    .botao{
+    .botao,a, button{
         font-size: 20px;
         border: none;
     background: none;

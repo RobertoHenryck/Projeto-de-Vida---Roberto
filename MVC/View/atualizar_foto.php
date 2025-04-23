@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
+require_once 'C:\Turma2\xampp\htdocs\Projeto-de-Vida---Roberto\config.php';
 
 header('Content-Type: application/json');
 
@@ -53,4 +53,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['arquivo'])) {
         echo json_encode(['status' => 'erro', 'mensagem' => 'Erro ao mover o arquivo.']);
     }
 }
-?>
